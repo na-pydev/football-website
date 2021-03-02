@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="slideshow-container">
+    <div class="mySlides first fade">
+        <div class="numbertext">1/3</div>
+        <img src="{% static 'img/ball.jpg' %}" alt="">
+        <div class="text">Caption text</div>
+
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">1/3</div>
+        <img src="{% static 'img/player.jpg' %}" alt="" style="width: 100%;">
+        <div class="text">Caption text</div>
+
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">1/3</div>
+        <img src="{% static 'img/hames.jpg' %}" alt="" style="width: 100%;">
+        <div class="text">Caption text</div>
+    </div>
+
+    <a onclick="plusSlides(-1)" class="prev">&#10094;</a>
+    <a onclick="plusSlides(-1)" class="next">&#10095;</a>
+</div>
+
+<div style="text-align: center;">
+    <span class="dot" onclick="currentSlide(1)" ></span>
+    <span class="dot" onclick="currentSlide(2)" ></span>
+    <span class="dot" onclick="currentSlide(3)" ></span>
+</div>
+<main class="container">
+    <div class="match">
+        {% for match in matches %}
+        {% if not match.previous_match %}
+        <div class="upcoming-match">
+            <h3>Upcoming-match</h3>
+            <div class="upcoming-board">
+                <div class="home">
+                    <img width="50px" src="{{match.host_team_logo_url}}" alt="">
+                    <p>OQ-TEPA FC</p>
+                </div>
+                <div>VS</div>
+                <div class="away">
+                    <img width="40px" src="{{match.guest_team_logo_url}}" alt="">
+                    <p>PAKHTAKOR FC</p>
+                </div>
+            </div>
+            <p>{{match.stadium}} | {{match.date|date:'M d, Y'}}</p>
+            <p>{{match.date|date:'H:i'}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="last-match">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/l-erXHwJNIU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="previous-matches">
+            {% for match in matches %}
+            {% if match.previous_match %}
+            <div class="upcoming-match">
+                <h3>Match {{match.match_number}}</h3>
+                <div class="upcoming-board">
+                    <div class="home">
+                        <img width="50px" src="{{match.host_team_logo_url}}" alt="">
+                        <p>{{match.host_team}}</p>
+                    </div>
+                    <div>{{match.host_team_score}} : {{match.guest_team_score}}</div>
+                    <div class="away">
+                        <img width="40px" src="{{match.guest_team_logo_url}}" alt="">
+                        <p>{{match.guest_team}}</p>
+                    </div>
+                </div>
+                <p>{{match.stadium}} | {{match.date|date:'M d, Y'}}</p>
+                <p>{{match.date|date:'H:i'}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="news-table-fixture">
+        <div class="news">
+            <h1 class="news_heading">News</h1>
+            <div class="news-main-box">
+                <img src="{{main_news.image_url}}" alt="">
+                <h2 class="news-title"><a href="{% url 'home:news_detail' main_news.id %}">{{main_news.title}}</a></h2>
+            </div>
+            {% for news in other_news %}
+            <div class="news-small-box">
+                <img src="{{news.image_url}}" alt="">
+                <p class="news-title"><a href="{% url 'home:news_detail' news.id %}">{{news.title}}</a></p>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class="table-fixture">
+            <div class="point-table">
+                <h1 class="table">Point table</h1>
+                <img src="{% static 'img/table.jpg' %}" alt="">
+            </div>
+            <div class="fixture">
+                <h1 class="match-fixture">Match fixture</h1>
+                {% for match in matches %}
+        {% if not match.previous_match %}
+        <div class="upcoming-match">
+            <h3>Upcoming-match</h3>
+            <div class="upcoming-board">
+                <div class="home">
+                    <img width="50px" src="{{match.host_team_logo_url}}" alt="">
+                    <p>OQ-TEPA FC</p>
+                </div>
+                <div>VS</div>
+                <div class="away">
+                    <img width="40px" src="{{match.guest_team_logo_url}}" alt="">
+                    <p>PAKHTAKOR FC</p>
+                </div>
+            </div>
+            <p>{{match.stadium}} | {{match.date|date:'M d, Y'}}</p>
+            <p>{{match.date|date:'H:i'}}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>WHO WE ARE.</h2>
+                <p>
+                    Oq Tepa FC is a professional football club in Tashkent, Uzbekistan, that competes in the Super Liga, the top tier of Uzbek football. 
+                </p>
+                <button class="btn">Read more</button>
+            </div>
+            <div class="about-img">
+                <img width="400px" src="https://rstheme.com/products/html/khelo/images/about/about-home.png" alt="">
+            </div>
+        </div>
+    </div>
+</main>
+<div class="gallery-container">
+    <div class="gallery">
+        <h2 class="red-heading">GALLERY</h2>
+        <div class="g-content">
+            <div class="box1"><img src="https://daily.jstor.org/wp-content/uploads/2018/06/soccer_europe_1050x700.jpg" alt=""></div>
+            <div class="box2"><img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iDt6V.rPqgC0/v1/1000x-1.jpg" alt=""></div>
+            <div class="box3"><img src="https://www.worldsoccer.com/wp-content/uploads/2020/11/GettyImages-1190255069-600x490.jpg" alt=""></div>
+            <div class="box4"><img src="https://soccer.nbcsports.com/wp-content/uploads/sites/14/2020/02/GettyImages-1198667035-e1580869734123.jpg" alt=""></div>
+            <div class="box5"><img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f3a839ed446d5a0755ba4b3%2F0x0.jpg" alt=""></div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

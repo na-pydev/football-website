@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Coaches</h1>
+  <section class="staff">
+      {% for person in squad %}
+      <div class="main-staff">
+          <img src="{{person.image_url}}" alt="">
+          <h5>{{person.role}}</h5>
+          <h5>{{person.full_name}}</h5>
+      </div>
+      {% endfor %}
+  </section>
+  <h1>Players</h1>
+  <section class="players">
+    {% for player in players %}
+    <div class="main-players">
+        <img src="{{player.image_url}}" alt="">
+        <h5>{{player.position}}</h5>
+        <h5>{{player.full_name}}</h5>
+    </div>
+    {% endfor %}
+  </section>
+{% endblock content %}

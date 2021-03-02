@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h1>League Table</h1>
+  <ul class="league-table">
+      <li>
+          <h3> </h3>
+          <h3> </h3>
+          <h3>Team</h3>
+          <h3>M</h3>
+          <h3>W</h3>
+          <h3>D</h3>
+          <h3>L</h3>
+          <h3>Points</h3>
+      </li>
+      {% for key, team in league_teams.items %}
+      <li>
+        <h3>{{key}}</h3>
+        <h3><img width="50px" src="{{team.logo_url}}" alt=""></h3>
+        <h3>{{team.name}}</h3>
+        <h3>{{team.matches_played}}</h3>
+        <h3>{{team.win}}</h3>
+        <h3>{{team.draw}}</h3>
+        <h3>{{team.lost}}</h3>
+        <h3>{{team.points}}</h3>
+      </li>
+      {% endfor %}
+  </ul>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/icon" href="{% static 'img/fav.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f68d03869f.js" crossorigin="anonymous"></script>
+    <title>OQ-TEPA FC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&family=Source+Serif+Pro&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="base">
+        <div class="social-links hide-me part-a">
+            <div><i class="fab fa-facebook-square fa-2x"></i></div>
+            <div><i class="fab fa-instagram-square fa-2x"></i></div>
+            <div><i class="fab fa-twitter-square fa-2x"></i></div>
+            <div><i class="fab fa-youtube-square fa-2x"></i></div>
+            <div><i class="fab fa-telegram fa-2x"></i></div>
+        </div>
+        <nav>
+            <div class="logo">
+                    <div class="logo-image"><img src="https://storage.googleapis.com/cpt-partners-content-prod/0709f6c7-a945-44e3-8f6c-3bbd82c2eb5c.png" alt=""></div>
+                    <div class="logo-name">OQ-TEPA FC</div>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-link"><a href="{% url 'home:home' %}">Home</a></li>
+                <li class="nav-link"><a href="{% url 'home:club_squad' %}">Club Squad</a></li>
+                <li class="nav-link"><a href="{% url 'home:result' %}">Results</a></li>
+                <li class="nav-link"><a href="{% url 'home:point_table' %}">Point Table</a></li>
+                <li class="nav-link"><a href="{% url 'home:news' %}">News</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-link">
+                    <a href="{% url 'home:dashboard' %}">Hello, {{user.username}}</a>
+                </li>
+                {% else %}
+                <li class="nav-link"><a href="{% url 'home:login' %}">Fan Club Log-in</a></li>
+                {% endif %}
+            </ul>
+            <ul id="mySidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li class="nav-link"><a href="{% url 'home:home' %}">Home</a></li>
+                <li class="nav-link"><a href="{% url 'home:club_squad' %}">Club Squad</a></li>
+                <li class="nav-link"><a href="{% url 'home:result' %}">Results</a></li>
+                <li class="nav-link"><a href="{% url 'home:point_table' %}">Point Table</a></li>
+                <li class="nav-link"><a href="{% url 'home:news' %}">News</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-link">
+                    <a href="{% url 'home:dashboard' %}">Hello, {{user.username}}</a>
+                </li>
+                {% else %}
+                <li class="nav-link"><a href="{% url 'home:login' %}">Fan Club Log-in</a></li>
+                {% endif %}
+                <div class="social-links inside part-a">
+                    <div><i class="fab fa-facebook-square fa-2x"></i></div>
+                    <div><i class="fab fa-instagram-square fa-2x"></i></div>
+                    <div><i class="fab fa-twitter-square fa-2x"></i></div>
+                    <div><i class="fab fa-youtube-square fa-2x"></i></div>
+                    <div><i class="fab fa-telegram fa-2x"></i></div>
+                </div>
+            </ul>
+            <div class="openbtn">
+                <button class="openbtn" onclick="openNav()">&#9776;</button>
+            </div>
+        </nav>
+        
+        {% block content %}
+      
+        {% endblock content %}
+        <footer>
+            <h2>OQ-TEPA FC</h2>
+            <div class="social-links">
+                <div><i class="fab fa-facebook-square fa-2x"></i></div>
+                <div><i class="fab fa-instagram-square fa-2x"></i></div>
+                <div><i class="fab fa-twitter-square fa-2x"></i></div>
+                <div><i class="fab fa-youtube-square fa-2x"></i></div>
+                <div><i class="fab fa-telegram fa-2x"></i></div>
+            </div>
+            <p>© Copyright 2021 The Oq-tepa Football Club and Athletic Grounds Limited.</p>
+            <p>Nurmatov Abdurakhimbek</p>
+        </footer>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

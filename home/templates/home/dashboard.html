@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="logged-in">
+    <h1>Welcome, {{user.username}}</h1>
+    <a href="{% url 'home:logout' %}"><button class="btn">Log-out</button></a>
+</div>
+<img width="800px" src="https://i2-prod.chroniclelive.co.uk/incoming/article15598911.ece/ALTERNATES/s1200/0_Sunderland-v-Bradford-City-Sky-Bet-League-One.jpg" alt="">
+{% endblock content %}

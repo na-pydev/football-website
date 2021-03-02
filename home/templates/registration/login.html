@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <form class="main-form" action="{% url 'home:login' %}" method="POST" >
+      <p>Please, use the following form to log-in. If you don't have an
+      account <a href="{% url 'home:register' %}">register here</a></p>
+      
+      <img src="https://win10faq.com/wp-content/uploads/2018/02/microsoft-img.png" alt="">
+      <h2>Fan Club Account</h2>
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="hidden" name="next" next={{next}}>
+      <button type=submit class="btn">Login</button>
+  </form>
+{% endblock content %}

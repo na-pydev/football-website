@@ -1,0 +1,9 @@
+<div class="paginator">
+        {% if page.has_previous %}
+            <a href="?page={{page.previous_page_number}}"><button class="btn">Previous</button></a>
+        {% endif %}
+        <b>{{page.number}} out of {{page.paginator.num_pages}}</b>
+        {% if page.has_next %}
+            <a href="?page={{page.next_page_number}}"><button class="btn">Next</button></a>
+        {% endif %}
+</div>

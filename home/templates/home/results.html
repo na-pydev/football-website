@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Results</h1>
+  <ul class="match-list">
+      {% for match in results %}
+        <li>
+            <h3 id="match-num">Match {{match.match_number}}</h3>
+            <div><img width="50px" src="{{match.host_team_logo_url}}" alt=""> </div>
+            <h3>{{match.host_team}}</h3> 
+            <div>
+                <h3>{{match.host_team_score}} : {{match.guest_team_score}}</h3>
+            </div>
+            <h3>{{match.guest_team}}</h3>
+            <div><img width="50px" src="{{match.guest_team_logo_url}}" alt=""></div> 
+        </li>
+      {% endfor %}
+  </ul>
+{% endblock content %}
